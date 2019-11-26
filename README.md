@@ -1,2 +1,2 @@
 # SNEA
-Learning Signed Network Embedding via Graph Attention
+Implementation of "Learning Signed Network Embedding via Graph Attention", aaai2020.
