@@ -29,7 +29,6 @@ def tsvd(A, dim):
 
 
 if __name__ == "__main__":
-    num_to_skip = 0
     training_network_file_name = sys.argv[1]
     saved_path = sys.argv[2]
     k_to_keep = int(sys.argv[3])  # number of features
