@@ -45,6 +45,7 @@ parser.add_argument('--num_input_features', type=int, default=64)  # none means 
 parser.add_argument('--modify_input_features', type=str2bool, nargs='?', const=True, default=True)
 # we can use the calculate_class_weights() to generate class weights for pos, neg, no.
 parser.add_argument('--class_weights', type=lambda s: [float(item) for item in s.split('a')], default=None)
+parser.add_argument('--class_weight_no', type=float, default=None)
 parser.add_argument('--model_path', type=str,
                     default="modules/model_snea{}.pkl".format((datetime.datetime.now()).strftime("%Y%m%d%H%M%S")))
 
@@ -84,7 +85,8 @@ num_nodes, num_edges, adj_lists_pos, adj_lists_neg, num_feats, feat_data, test_a
 if args['num_input_features'] is None:
     args['num_input_features'] = num_feats
 
-args['class_weights'] = calculate_class_weights(num_nodes, num_edges[0], num_edges[1], w_no=None)
+#args['class_weights'] = calculate_class_weights(num_nodes, num_edges[0], num_edges[1], w_no=None)
+args['class_weights'] = calculate_class_weights(num_nodes, num_edges[0], num_edges[1], w_no=args['class_weight_no'])
 
 features = nn.Embedding(num_nodes, num_feats)
 if args['modify_input_features']:
