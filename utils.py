@@ -82,7 +82,6 @@ def calculate_class_weights(num_V, num_pos, num_neg, w_no=None):
     num_total = num_E + num_V
 
     if w_no is None:
-        # w_no = round(num_E * 1.0 / num_total, 2)
         w_no = round(num_V * 1.0 / num_total, 2)
     else:
         assert isinstance(w_no, float) and 0 < w_no < 1
