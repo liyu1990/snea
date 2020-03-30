@@ -34,7 +34,7 @@ class NonFirstLayerAggregator(nn.Module):
         for i, attention in enumerate(self.attentions_bal + self.attentions_unbal):
             self.add_module('attention_{}_{}'.format(self.id, i), attention)
 
-    def forward(self, nodes, to_neighs_pos, to_neighs_neg, num_sample=10):
+    def forward(self, nodes, to_neighs_pos, to_neighs_neg, num_sample=None):
         """
         nodes --- list of nodes in a batch
         to_neighs_pos --- list of sets, each set is the set of positive neighbors for node in batch
