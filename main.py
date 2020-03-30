@@ -45,6 +45,7 @@ parser.add_argument('--num_input_features', type=int, default=64)  # none means 
 parser.add_argument('--modify_input_features', type=str2bool, nargs='?', const=True, default=True)
 # we can use the calculate_class_weights() to generate class weights for pos, neg, no.
 parser.add_argument('--class_weights', type=lambda s: [float(item) for item in s.split('a')], default=None)
+# assign "no" link weight, as a parameter for function calculate_class_weights()
 parser.add_argument('--class_weight_no', type=float, default=0.35)  # 0.35 as default
 parser.add_argument('--model_path', type=str,
                     default="modules/model_snea{}.pkl".format((datetime.datetime.now()).strftime("%Y%m%d%H%M%S")))
