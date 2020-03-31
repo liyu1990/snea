@@ -83,11 +83,11 @@ class NonFirstLayerAggregator(nn.Module):
         x_unbal = torch.cat(
             [att(embed_matrix_unbal, torch.cat((adj_self, adj_bal), dim=1), embed_matrix_bal, adj_unbal,
                  shape=(len(self_nodes), len(unique_nodes)))
-             for att in self.attentions_bal], dim=1)
+             for att in self.attentions_unbal], dim=1)
         x_bal = torch.cat(
             [att(embed_matrix_bal, torch.cat((adj_self, adj_bal), dim=1), embed_matrix_unbal, adj_unbal,
                  shape=(len(self_nodes), len(unique_nodes)))
-             for att in self.attentions_unbal], dim=1)
+             for att in self.attentions_bal], dim=1)
 
         return x_bal, x_unbal
 
