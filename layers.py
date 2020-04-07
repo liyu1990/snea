@@ -48,7 +48,7 @@ class SpGraphAttentionLayer(nn.Module):
 
         self.a = nn.Parameter(torch.zeros(size=(1, 2 * self.out_features)))
         # nn.init.xavier_normal_(self.a.data, gain=1.414)
-        nn.init.xavier_normal_(self.W.data, gain=1)
+        nn.init.xavier_normal_(self.a.data, gain=1)
 
         self.act_func = F.tanh
         self.special_spmm = SpecialSpmm()
